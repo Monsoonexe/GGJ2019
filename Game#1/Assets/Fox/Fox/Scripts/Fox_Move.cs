@@ -101,11 +101,11 @@ public class Fox_Move : MonoBehaviour {
 
 	void Attack(){																//I activated the attack animation and when the 
 		//Atacking																//animation finish the event calls the AttackEnd()
-		if(Input.GetButton("Fire1")){
-			rb.velocity=new Vector2(0,0);
-			anim.SetTrigger("Attack");
-			attacking=true;
-		}
+		//if(Input.GetButton("Fire1")){
+		//	rb.velocity=new Vector2(0,0);
+		//	anim.SetTrigger("Attack");
+		//	attacking=true;
+		//}
 	}
 
 	void AttackEnd(){
