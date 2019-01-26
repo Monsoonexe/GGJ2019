@@ -44,12 +44,12 @@ namespace CreatureModule
 {
 	// Meta Data
 	public class CreatureMetaData {
-		public Dictionary<int, Tuple<int, int>> mesh_map;
+		public Dictionary<int, MeshBoneUtil.Tuple<int, int>> mesh_map;
 		public Dictionary<String, Dictionary<int, List<int> >> anim_order_map;
 
 		public CreatureMetaData()
 		{
-			mesh_map = new Dictionary<int, Tuple<int, int>>();
+			mesh_map = new Dictionary<int, MeshBoneUtil.Tuple<int, int>>();
 			anim_order_map = new Dictionary<String, Dictionary<int, List<int> >>();
 		}
 
@@ -226,7 +226,7 @@ namespace CreatureModule
 					int start_index = Convert.ToInt32(cur_obj["startIndex"]);
 					int end_index = Convert.ToInt32(cur_obj["endIndex"]);
 
-					meta_data.mesh_map[region_id] = new Tuple<int, int>(start_index, end_index);
+					meta_data.mesh_map[region_id] = new MeshBoneUtil.Tuple<int, int>(start_index, end_index);
 				}
 			}
 
@@ -440,7 +440,7 @@ namespace CreatureModule
 		{
 			MeshBone root_bone = null;
 			Dictionary<string, object> base_obj = (Dictionary<string, object>)json_obj[key];
-			Dictionary<int, Tuple<MeshBone, List<int> > > bone_data = new Dictionary<int, Tuple<MeshBone, List<int> > >();
+			Dictionary<int, MeshBoneUtil.Tuple<MeshBone, List<int> > > bone_data = new Dictionary<int, MeshBoneUtil.Tuple<MeshBone, List<int> > >();
 			Dictionary<int, int> child_set = new Dictionary<int, int>();
 			
 			// layout bones
@@ -466,7 +466,7 @@ namespace CreatureModule
 				new_bone.calcRestData();
 				new_bone.setTagId(cur_id);
 				
-				bone_data[cur_id] = new Tuple<MeshBone, List<int> >(new_bone, cur_children_ids);
+				bone_data[cur_id] = new MeshBoneUtil.Tuple<MeshBone, List<int> >(new_bone, cur_children_ids);
 				
 				foreach(int cur_child_id in cur_children_ids) {
 					child_set.Add(cur_child_id, cur_child_id);
@@ -474,7 +474,7 @@ namespace CreatureModule
 			}
 			
 			// Find root
-			foreach(KeyValuePair<int, Tuple<MeshBone, List<int> >> cur_data in bone_data)
+			foreach(KeyValuePair<int, MeshBoneUtil.Tuple<MeshBone, List<int> >> cur_data in bone_data)
 			{
 				int cur_id = cur_data.Key;
 				if(child_set.ContainsKey(cur_id) == false) {
@@ -485,7 +485,7 @@ namespace CreatureModule
 			}
 			
 			// construct hierarchy
-			foreach(KeyValuePair<int, Tuple<MeshBone, List<int> >> cur_data in bone_data)
+			foreach(KeyValuePair<int, MeshBoneUtil.Tuple<MeshBone, List<int> >> cur_data in bone_data)
 			{
 				MeshBone cur_bone = cur_data.Value.Item1;
 				List<int> children_ids = cur_data.Value.Item2;
@@ -551,7 +551,7 @@ namespace CreatureModule
 			return ret_regions;
 		}
 
-		public static Tuple<int, int> GetStartEndTimes(Dictionary<string, object> json_obj,
+		public static MeshBoneUtil.Tuple<int, int> GetStartEndTimes(Dictionary<string, object> json_obj,
 		                                           	   string key)
 		{
 			int start_time = 0;
@@ -991,7 +991,7 @@ namespace CreatureModule
 			Dictionary<string, object> json_anim_base = (Dictionary<string, object>)load_data["animation"];
 			Dictionary<string, object> json_clip = (Dictionary<string, object>)json_anim_base[name_in];
 
-			Tuple<int, int> start_end_times = Utils.GetStartEndTimes(json_clip, "bones"); 
+            MeshBoneUtil.Tuple<int, int> start_end_times = Utils.GetStartEndTimes(json_clip, "bones"); 
 			start_time = start_end_times.Item1;
 			end_time = start_end_times.Item2;
 
