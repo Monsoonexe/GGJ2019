@@ -141,10 +141,6 @@ public class Fox_Move : MonoBehaviour {
 			anim.SetTrigger("Damage");
 			Hurt();
 		}
-        if (!other.gameObject.CompareTag("Level"))
-        {
-            Debug.Log(other.gameObject.name);
-        }
 	}
 
 	void Hurt(){
