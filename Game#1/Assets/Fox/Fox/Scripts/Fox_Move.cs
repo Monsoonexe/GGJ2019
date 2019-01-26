@@ -11,7 +11,7 @@ public class Fox_Move : MonoBehaviour {
 	private SpriteRenderer sp;
 	private float rateOfHit;
 	private GameObject[] life;
-	private int qtdLife;
+	[SerializeField] private int qtdLife = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +25,6 @@ public class Fox_Move : MonoBehaviour {
 		crouching=false;
 		rateOfHit=Time.time;
 		life=GameObject.FindGameObjectsWithTag("Life");
-		qtdLife=life.Length;
 	}
 	
 	// Update is called once per frame

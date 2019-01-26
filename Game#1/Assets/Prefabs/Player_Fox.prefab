@@ -172,3 +172,4 @@ MonoBehaviour:
   dead: 0
   attacking: 0
   special: 0
+  qtdLife: 3
