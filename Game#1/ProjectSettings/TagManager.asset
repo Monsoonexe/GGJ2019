@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - GameManager
   - Level
+  - EnvironmentTile
   layers:
   - Default
   - TransparentFX
