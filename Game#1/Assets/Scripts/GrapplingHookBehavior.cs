@@ -14,6 +14,7 @@ public class GrapplingHookBehavior : MonoBehaviour
     private Camera playerCam;
     private LineRenderer lineRenderer;
     private Animator animator;
+    private Rigidbody2D rb;
 
     //private Coroutine coroutine_removeGrapplingHookAfter
 
@@ -22,8 +23,12 @@ public class GrapplingHookBehavior : MonoBehaviour
 
     private void Awake()
     {
-        lineRenderer = GetComponent<LineRenderer>() as LineRenderer;
+        //external references
         playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
+
+        //internal references
+        lineRenderer = GetComponent<LineRenderer>() as LineRenderer;
+        rb = GetComponent<Rigidbody2D>() as Rigidbody2D;
     }
 
 
@@ -39,6 +44,7 @@ public class GrapplingHookBehavior : MonoBehaviour
         //check for grappling hook
         if (Input.GetButtonDown(grapplingHookButton))
         {
+            Debug.Log("Grappling Hook Button Pressed!");
             ShootGrapplingHook();
         }
         else if (Input.GetButtonUp(grapplingHookButton))
@@ -68,16 +74,21 @@ public class GrapplingHookBehavior : MonoBehaviour
         lineRenderer.SetPosition(0, grappleOriginTransform.position);
         animator.SetBool("Down", true);
 
+
     }
 
     private void ShootGrapplingHook()
     {
+        Debug.Log("Shooting hook....");
         //get mouse position in the world
         Vector3 cursorClick = playerCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 originPoint = grappleOriginTransform.position;
         retractDirection = cursorClick - originPoint;
 
         RaycastHit hitInfo;
+
+        GameObject debugPoint = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        debugPoint.transform.position = cursorClick;
 
         //raycast to this point
         if (Physics.Raycast(originPoint, retractDirection, out hitInfo, maxGrappleHookDistance))
@@ -103,6 +114,10 @@ public class GrapplingHookBehavior : MonoBehaviour
             lineRenderer.positionCount = 2;
             lineRenderer.SetPosition(0, originPoint);
             lineRenderer.SetPosition(1, hitInfo.point);
+        }
+        else
+        {
+            Debug.Log("Raycast hit nothing....");
         }
 
         
