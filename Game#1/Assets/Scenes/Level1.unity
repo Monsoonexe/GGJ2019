@@ -122,7 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 281538769}
   - component: {fileID: 281538770}
-  m_Layer: 0
+  - component: {fileID: 281538771}
+  m_Layer: 9
   m_Name: Forest_terrain_dirt_grass(summer)_128px_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +192,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &281538771
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281538768}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
 --- !u!1 &313558796
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +220,8 @@ GameObject:
   m_Component:
   - component: {fileID: 313558797}
   - component: {fileID: 313558798}
-  m_Layer: 0
+  - component: {fileID: 313558799}
+  m_Layer: 9
   m_Name: Forest_terrain_dirt_grass(summer)_128px_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,6 +290,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &313558799
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313558796}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
 --- !u!1001 &396501308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,7 +349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4472814871369082, guid: e77bf335b82cfe74d81debd8bdf7484d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4472814871369082, guid: e77bf335b82cfe74d81debd8bdf7484d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -324,6 +362,10 @@ PrefabInstance:
     - target: {fileID: 4472814871369082, guid: e77bf335b82cfe74d81debd8bdf7484d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930493908575208, guid: e77bf335b82cfe74d81debd8bdf7484d, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e77bf335b82cfe74d81debd8bdf7484d, type: 3}
@@ -425,7 +467,8 @@ GameObject:
   m_Component:
   - component: {fileID: 853448807}
   - component: {fileID: 853448808}
-  m_Layer: 0
+  - component: {fileID: 853448809}
+  m_Layer: 9
   m_Name: Forest_terrain_dirt_grass(summer)_128px_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,80 +537,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1170758936
-PrefabInstance:
+--- !u!68 &853448809
+EdgeCollider2D:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2384495116204862287, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_Name
-      value: Player_Fox (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.31
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862325, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: qtdLife
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 37f057e02711d5b4e937a4d7d25c2258, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853448806}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
 --- !u!1 &1662659738
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +622,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1856821360
 PrefabInstance:
@@ -687,7 +674,7 @@ PrefabInstance:
     - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2384495116204862282, guid: 37f057e02711d5b4e937a4d7d25c2258,
         type: 3}
@@ -716,7 +703,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1924810940}
   - component: {fileID: 1924810941}
-  m_Layer: 0
+  - component: {fileID: 1924810942}
+  m_Layer: 9
   m_Name: Forest_terrain_dirt_grass(summer)_128px_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,6 +773,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &1924810942
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924810939}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
 --- !u!1 &2032476672
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,5 +868,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
