@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -179,24 +179,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862281, guid: 37f057e02711d5b4e937a4d7d25c2258,
+    - target: {fileID: 8610338462250113843, guid: 37f057e02711d5b4e937a4d7d25c2258,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.508982
       objectReference: {fileID: 0}
-    - target: {fileID: 2384495116204862324, guid: 37f057e02711d5b4e937a4d7d25c2258,
+    - target: {fileID: 8610338462250113843, guid: 37f057e02711d5b4e937a4d7d25c2258,
         type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4484488036128586755, guid: 37f057e02711d5b4e937a4d7d25c2258,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4484488036128586755, guid: 37f057e02711d5b4e937a4d7d25c2258, type: 3}
-    - {fileID: 2384495116204862324, guid: 37f057e02711d5b4e937a4d7d25c2258, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37f057e02711d5b4e937a4d7d25c2258, type: 3}
 --- !u!1 &386974948
 GameObject:
@@ -18464,28 +18457,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1948012521 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2384495116204862287, guid: 37f057e02711d5b4e937a4d7d25c2258,
-    type: 3}
-  m_PrefabInstance: {fileID: 26682435}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &1948012528
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948012521}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0747242, y: 0.026443481}
-  m_Size: {x: 0.7545872, y: 1.2330384}
-  m_Direction: 0
 --- !u!1 &2083776725
 GameObject:
   m_ObjectHideFlags: 0
