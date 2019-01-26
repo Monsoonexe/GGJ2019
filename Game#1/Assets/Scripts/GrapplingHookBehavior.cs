@@ -16,6 +16,7 @@ public class GrapplingHookBehavior : MonoBehaviour
     private LineRenderer lineRenderer;
     private Animator animator;
     private Rigidbody2D rb;
+    private Fox_Move moveScript;
 
     //private Coroutine coroutine_removeGrapplingHookAfter
 
@@ -31,6 +32,7 @@ public class GrapplingHookBehavior : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>() as LineRenderer;
         rb = GetComponent<Rigidbody2D>() as Rigidbody2D;
         animator = GetComponent<Animator>() as Animator;
+        moveScript = GetComponent<Fox_Move>() as Fox_Move;
     }
 
 
@@ -66,12 +68,16 @@ public class GrapplingHookBehavior : MonoBehaviour
         isGrappling = false;
         //remove line renderer
         lineRenderer.positionCount = 0;
+        moveScript.isGrappling = false;
     }
 
     private void HandleGrappling()
     {
+        //rb.velocity = new Vector2(retractDirection.x * Time.deltaTime * retractSpeedIncreaseRate, rb.velocity.y);
         //add velocity in this direction
         rb.velocity = retractDirection * retractSpeedIncreaseRate;
+        //Debug.Log(rb.velocity);
+        moveScript.isGrappling = true;
 
         //update line renderer
         lineRenderer.SetPosition(0, new Vector3(grappleOriginTransform.position.x, grappleOriginTransform.position.y, -1));
@@ -95,12 +101,9 @@ public class GrapplingHookBehavior : MonoBehaviour
 
         if (hitInfo.collider)
         {
-
             Tilemap tileMap = hitInfo.collider.gameObject.GetComponent<Tilemap>() as Tilemap;
             if (tileMap.HasTile(new Vector3Int(Mathf.RoundToInt(cursorClick.x), Mathf.RoundToInt(cursorClick.y), 0)))
             {
-                Debug.Log("HIT A TILE!");
-
                 //retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
                 isGrappling = true;
 
