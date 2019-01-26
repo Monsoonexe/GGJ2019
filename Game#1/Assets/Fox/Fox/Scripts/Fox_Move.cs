@@ -30,13 +30,12 @@ public class Fox_Move : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(dead==false){
-		//Character doesnt choose direction in Jump									//If you want to choose direction in jump
-			if(attacking==false){													//just delete the (jumping==false)
-				if(jumping==false&&crouching==false){
-					Movement();
-					Attack();
-					Special();
-				}
+		//Character doesnt choose direction in Jump					
+			if(!attacking){			
+                Movement();
+				Attack();
+				Special();
+
 				Jump();
 				Crouch();
 			}
@@ -79,7 +78,7 @@ public class Fox_Move : MonoBehaviour {
 
 	void Jump(){
 		//Jump
-		if(Input.GetButton("Jump") && rb.velocity.y == 0){
+		if(Input.GetButtonDown("Jump") && rb.velocity.y == 0){
 			rb.AddForce(new Vector2(0,jumpForce));
 
 		}
