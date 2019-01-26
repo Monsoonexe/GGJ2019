@@ -30,13 +30,12 @@ public class Fox_Move : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if(dead==false){
-		//Character doesnt choose direction in Jump									//If you want to choose direction in jump
-			if(attacking==false){													//just delete the (jumping==false)
-				if(jumping==false&&crouching==false){
-					Movement();
-					Attack();
-					Special();
-				}
+		//Character doesnt choose direction in Jump					
+			if(!attacking){			
+                Movement();
+				Attack();
+				Special();
+
 				Jump();
 				Crouch();
 			}
@@ -48,14 +47,14 @@ public class Fox_Move : MonoBehaviour {
 	void Movement(){
 		//Character Move
 		float move = Input.GetAxisRaw("Horizontal");
-		if(Input.GetButton("Horizontal")){
+		if(Input.GetButtonDown("Walk")){
 			//Run
-			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,rb.velocity.y);
-			running=true;
-		}else{
-			//Walk
 			rb.velocity = new Vector2(move*speed*Time.deltaTime,rb.velocity.y);
 			running=false;
+		}else{
+			//Walk
+			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,rb.velocity.y);
+			running=true;
 		}
 
 		//Turn
@@ -79,7 +78,7 @@ public class Fox_Move : MonoBehaviour {
 
 	void Jump(){
 		//Jump
-		if(Input.GetButton("Jump") && rb.velocity.y == 0){
+		if(Input.GetButtonDown("Jump") && rb.velocity.y == 0){
 			rb.AddForce(new Vector2(0,jumpForce));
 
 		}
@@ -102,11 +101,11 @@ public class Fox_Move : MonoBehaviour {
 
 	void Attack(){																//I activated the attack animation and when the 
 		//Atacking																//animation finish the event calls the AttackEnd()
-		if(Input.GetButton("Fire1")){
-			rb.velocity=new Vector2(0,0);
-			anim.SetTrigger("Attack");
-			attacking=true;
-		}
+		//if(Input.GetButton("Fire1")){
+		//	rb.velocity=new Vector2(0,0);
+		//	anim.SetTrigger("Attack");
+		//	attacking=true;
+		//}
 	}
 
 	void AttackEnd(){

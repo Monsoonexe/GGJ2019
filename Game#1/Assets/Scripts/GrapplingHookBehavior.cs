@@ -1,0 +1,139 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+
+[RequireComponent(typeof(LineRenderer))]
+public class GrapplingHookBehavior : MonoBehaviour
+{
+    [SerializeField] private Transform grappleOriginTransform;
+    [SerializeField] private float retractSpeedIncreaseRate = 1.1f;
+
+    private bool isGrappling;
+    private Vector2 retractDirection;
+
+    private Camera playerCam;
+    private LineRenderer lineRenderer;
+    private Animator animator;
+    private Rigidbody2D rb;
+
+    //private Coroutine coroutine_removeGrapplingHookAfter
+
+    private readonly string grapplingHookButton = "Fire1";
+    private readonly static int maxGrappleHookDistance = 50;
+
+    private void Awake()
+    {
+        //external references
+        playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
+
+        //internal references
+        lineRenderer = GetComponent<LineRenderer>() as LineRenderer;
+        rb = GetComponent<Rigidbody2D>() as Rigidbody2D;
+        animator = GetComponent<Animator>() as Animator;
+    }
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //check for grappling hook
+        if (Input.GetButtonDown(grapplingHookButton))
+        {
+            //Debug.Log("Grappling Hook Button Pressed!");
+            ShootGrapplingHook();
+        }
+        else if (Input.GetButtonUp(grapplingHookButton))
+        {
+            ReleaseGrapplingHook();
+        }
+
+        if (isGrappling)
+        {
+            HandleGrappling();
+        }
+    }
+
+    private void ReleaseGrapplingHook()
+    {
+        //release the Hoook
+        isGrappling = false;
+        //remove line renderer
+        lineRenderer.positionCount = 0;
+    }
+
+    private void HandleGrappling()
+    {
+        //add velocity in this direction
+        rb.velocity = retractDirection * retractSpeedIncreaseRate;
+
+        //update line renderer
+        lineRenderer.SetPosition(0, new Vector3(grappleOriginTransform.position.x, grappleOriginTransform.position.y, -1));
+        animator.SetBool("Down", true);
+
+
+    }
+
+    private void ShootGrapplingHook()
+    {
+        //Debug.Log("Shooting hook....");
+        //get mouse position in the world
+        Vector2 cursorClick = playerCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 originPoint = grappleOriginTransform.position;
+        retractDirection = cursorClick - originPoint;
+        
+        int layerMask = (gameObject.layer);
+
+        //raycast to this point
+        RaycastHit2D hitInfo = Physics2D.Raycast(originPoint, retractDirection, maxGrappleHookDistance, layerMask);
+
+        if (hitInfo.collider)
+        {
+
+            Tilemap tileMap = hitInfo.collider.gameObject.GetComponent<Tilemap>() as Tilemap;
+            if (tileMap.HasTile(new Vector3Int(Mathf.RoundToInt(cursorClick.x), Mathf.RoundToInt(cursorClick.y), 0)))
+            {
+                Debug.Log("HIT A TILE!");
+
+                //retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
+                isGrappling = true;
+
+                //handle line renderer
+                lineRenderer.positionCount = 2;
+                lineRenderer.SetPosition(0, new Vector3(originPoint.x, originPoint.y, -1));
+                lineRenderer.SetPosition(1, new Vector3(hitInfo.point.x, hitInfo.point.y, -1));
+            }
+           
+            //switch on collider's tag to do specific things
+            switch (hitInfo.collider.gameObject.tag)
+            {
+                //if enemy
+                case "Enemy":
+                    Debug.Log("Grappling Hook hit enemy! That is all.");
+                    break;
+
+                //if environment
+                case "EnvironmentTile":
+                    Debug.Log("Grappling Hook hit environment!");
+                    break;
+            }
+
+            
+        }
+        else
+        {
+            Debug.Log("Raycast hit nothing....");
+        }
+        
+
+
+    }
+
+    
+}
