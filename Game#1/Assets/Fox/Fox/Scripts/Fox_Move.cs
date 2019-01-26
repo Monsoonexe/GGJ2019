@@ -48,14 +48,14 @@ public class Fox_Move : MonoBehaviour {
 	void Movement(){
 		//Character Move
 		float move = Input.GetAxisRaw("Horizontal");
-		if(Input.GetButton("Horizontal")){
+		if(Input.GetButtonDown("Walk")){
 			//Run
-			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,rb.velocity.y);
-			running=true;
-		}else{
-			//Walk
 			rb.velocity = new Vector2(move*speed*Time.deltaTime,rb.velocity.y);
 			running=false;
+		}else{
+			//Walk
+			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,rb.velocity.y);
+			running=true;
 		}
 
 		//Turn
@@ -142,6 +142,10 @@ public class Fox_Move : MonoBehaviour {
 			anim.SetTrigger("Damage");
 			Hurt();
 		}
+        if (!other.gameObject.CompareTag("Level"))
+        {
+            Debug.Log(other.gameObject.name);
+        }
 	}
 
 	void Hurt(){

@@ -10,6 +10,7 @@ TagManager:
   - Life
   - Enemy
   - GameManager
+  - Level
   layers:
   - Default
   - TransparentFX
