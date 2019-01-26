@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(LineRenderer))]
 public class GrapplingHookBehavior : MonoBehaviour
@@ -10,7 +9,7 @@ public class GrapplingHookBehavior : MonoBehaviour
     [SerializeField] private float retractSpeedIncreaseRate = 1.1f;
 
     private bool isGrappling;
-    private Vector2 retractDirection;
+    private Vector3 retractDirection;
 
     private Camera playerCam;
     private LineRenderer lineRenderer;
@@ -30,7 +29,6 @@ public class GrapplingHookBehavior : MonoBehaviour
         //internal references
         lineRenderer = GetComponent<LineRenderer>() as LineRenderer;
         rb = GetComponent<Rigidbody2D>() as Rigidbody2D;
-        animator = GetComponent<Animator>() as Animator;
     }
 
 
@@ -46,7 +44,7 @@ public class GrapplingHookBehavior : MonoBehaviour
         //check for grappling hook
         if (Input.GetButtonDown(grapplingHookButton))
         {
-            //Debug.Log("Grappling Hook Button Pressed!");
+            Debug.Log("Grappling Hook Button Pressed!");
             ShootGrapplingHook();
         }
         else if (Input.GetButtonUp(grapplingHookButton))
@@ -71,10 +69,9 @@ public class GrapplingHookBehavior : MonoBehaviour
     private void HandleGrappling()
     {
         //add velocity in this direction
-        rb.velocity = retractDirection * retractSpeedIncreaseRate;
 
         //update line renderer
-        lineRenderer.SetPosition(0, new Vector3(grappleOriginTransform.position.x, grappleOriginTransform.position.y, -1));
+        lineRenderer.SetPosition(0, grappleOriginTransform.position);
         animator.SetBool("Down", true);
 
 
@@ -82,34 +79,20 @@ public class GrapplingHookBehavior : MonoBehaviour
 
     private void ShootGrapplingHook()
     {
-        //Debug.Log("Shooting hook....");
+        Debug.Log("Shooting hook....");
         //get mouse position in the world
-        Vector2 cursorClick = playerCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 originPoint = grappleOriginTransform.position;
+        Vector3 cursorClick = playerCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 originPoint = grappleOriginTransform.position;
         retractDirection = cursorClick - originPoint;
-        
-        int layerMask = (gameObject.layer);
+
+        RaycastHit hitInfo;
+
+        GameObject debugPoint = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        debugPoint.transform.position = cursorClick;
 
         //raycast to this point
-        RaycastHit2D hitInfo = Physics2D.Raycast(originPoint, retractDirection, maxGrappleHookDistance, layerMask);
-
-        if (hitInfo.collider)
+        if (Physics.Raycast(originPoint, retractDirection, out hitInfo, maxGrappleHookDistance))
         {
-
-            Tilemap tileMap = hitInfo.collider.gameObject.GetComponent<Tilemap>() as Tilemap;
-            if (tileMap.HasTile(new Vector3Int(Mathf.RoundToInt(cursorClick.x), Mathf.RoundToInt(cursorClick.y), 0)))
-            {
-                Debug.Log("HIT A TILE!");
-
-                //retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
-                isGrappling = true;
-
-                //handle line renderer
-                lineRenderer.positionCount = 2;
-                lineRenderer.SetPosition(0, new Vector3(originPoint.x, originPoint.y, -1));
-                lineRenderer.SetPosition(1, new Vector3(hitInfo.point.x, hitInfo.point.y, -1));
-            }
-           
             //switch on collider's tag to do specific things
             switch (hitInfo.collider.gameObject.tag)
             {
@@ -124,13 +107,27 @@ public class GrapplingHookBehavior : MonoBehaviour
                     break;
             }
 
-            
+            retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
+            isGrappling = true;
+
+            //handle line renderer
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, originPoint);
+            lineRenderer.SetPosition(1, hitInfo.point);
         }
         else
         {
             Debug.Log("Raycast hit nothing....");
         }
+
         
+        //if not, mouse position is line renderer endpoint
+        
+        
+        //get direction from current point to endpoint
+        //
+
+        //
 
 
     }
