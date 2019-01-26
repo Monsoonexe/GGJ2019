@@ -13,6 +13,8 @@ public class Fox_Move : MonoBehaviour {
 	private GameObject[] life;
 	[SerializeField] private int qtdLife = 3;
 
+    public bool isGrappling = false;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -31,8 +33,8 @@ public class Fox_Move : MonoBehaviour {
 	void FixedUpdate () {
 		if(dead==false){
 		//Character doesnt choose direction in Jump					
-			if(!attacking){			
-                Movement();
+			if(!attacking){		
+                if(!isGrappling) Movement();
 				Attack();
 				Special();
 
@@ -48,11 +50,11 @@ public class Fox_Move : MonoBehaviour {
 		//Character Move
 		float move = Input.GetAxisRaw("Horizontal");
 		if(Input.GetButtonDown("Walk")){
-			//Run
+			//Walk
 			rb.velocity = new Vector2(move*speed*Time.deltaTime,rb.velocity.y);
 			running=false;
 		}else{
-			//Walk
+			//Run
 			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,rb.velocity.y);
 			running=true;
 		}
@@ -156,6 +158,7 @@ public class Fox_Move : MonoBehaviour {
 			anim.SetTrigger("Dead");
 			dead=true;
 
+            isGrappling = false;
 		}
 	}
 
