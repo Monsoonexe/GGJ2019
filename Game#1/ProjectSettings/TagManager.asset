@@ -9,6 +9,7 @@ TagManager:
   - horseman_tag
   - Life
   - Enemy
+  - GameManager
   layers:
   - Default
   - TransparentFX
