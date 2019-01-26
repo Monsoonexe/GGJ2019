@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool TESTING = false;
     [SerializeField] private Transform startPoint;
     [SerializeField] private int winCelebrateSeconds = 5;
+    [SerializeField] private GameObject victoryWindow;
+
+    [SerializeField] private GameObject playerPrefab;
 
     private Vector3 nextSpawnPoint;
 
@@ -24,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
 
         nextSpawnPoint = startPoint.position;
-        
+
     }
 
     // Update is called once per frame
@@ -38,6 +41,20 @@ public class GameManager : MonoBehaviour
             }
         }
         
+    }
+
+    private void GetStartPosition()
+    {
+        startPoint = GameObject.FindGameObjectWithTag("PlayerStart").transform;
+    }
+
+    private void OnLevelWasLoaded(int sceneNo)
+    {
+        GetStartPosition();
+        nextSpawnPoint = startPoint.position;
+        victoryWindow.SetActive(false);
+        Instantiate(playerPrefab, nextSpawnPoint, Quaternion.identity);
+
     }
 
     private void SingletonPattern()
@@ -56,6 +73,7 @@ public class GameManager : MonoBehaviour
     public void WinLevel()
     {
         //say congrats!
+        victoryWindow.SetActive(true);
 
         //do win animations
         StartCoroutine(LoadLevelAfterDelay(winCelebrateSeconds));
@@ -72,6 +90,11 @@ public class GameManager : MonoBehaviour
 
         //load next level
         SceneManager.LoadScene(++sceneNo);
+    }
+
+    public void UpdateCheckPoint(Transform newCheckpoint)
+    {
+        UpdateCheckPoint(newCheckpoint.position);
     }
 
     public void UpdateCheckPoint(Vector3 newCheckPoint)
