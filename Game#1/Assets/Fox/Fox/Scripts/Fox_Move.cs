@@ -49,7 +49,7 @@ public class Fox_Move : MonoBehaviour {
 	void Movement(){
 		//Character Move
 		float move = Input.GetAxisRaw("Horizontal");
-		if(Input.GetKey(KeyCode.Z)){
+		if(Input.GetButton("Run")){
 			//Run
 			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,rb.velocity.y);
 			running=true;
@@ -80,7 +80,7 @@ public class Fox_Move : MonoBehaviour {
 
 	void Jump(){
 		//Jump
-		if(Input.GetKeyDown(KeyCode.X)&&rb.velocity.y==0){
+		if(Input.GetButton("Jump") && rb.velocity.y == 0){
 			rb.AddForce(new Vector2(0,jumpForce));
 
 		}
