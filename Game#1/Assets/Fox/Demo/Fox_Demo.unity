@@ -481,7 +481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.4874992, y: -1.7792473}
+  m_AnchoredPosition: {x: 2.487503, y: -1.7792511}
   m_SizeDelta: {x: -5.699997, y: -4.042}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596927198
@@ -518,17 +518,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Move = Arrows
+  m_Text: 'Move = A || D
 
-    Crouch = Down Arrow
+    Crouch = S
 
-    Run = Move+Z
+    Run = A || D
 
-    Jump  = X
+    Jump  = SPACE
 
-    Attack = C
+    Attack = Q || MB1
 
-    Special = Space'
+    Special = E || MB2'
 --- !u!222 &596927199
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -860,6 +860,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 109990148}
     m_Modifications:
+    - target: {fileID: 11443870, guid: 1c76796b9d148474196b6db5473eaa05, type: 2}
+      propertyPath: m_Text
+      value: 'Move = A || D
+
+        Crouch = S
+
+        Run = A || D
+
+        Jump  = SPACE
+
+        Attack = Q || MB1
+
+        Special = E || MB2'
+      objectReference: {fileID: 0}
     - target: {fileID: 22469198, guid: 1c76796b9d148474196b6db5473eaa05, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1127,7 +1141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.72700006, y: 0}
   m_AnchorMax: {x: 0.99300003, y: 0.24613482}
-  m_AnchoredPosition: {x: -0.70000076, y: 1}
+  m_AnchoredPosition: {x: -0.7000122, y: 1}
   m_SizeDelta: {x: 0.29999924, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1153380897

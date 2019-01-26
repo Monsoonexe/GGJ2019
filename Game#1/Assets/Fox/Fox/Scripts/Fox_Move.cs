@@ -49,7 +49,7 @@ public class Fox_Move : MonoBehaviour {
 	void Movement(){
 		//Character Move
 		float move = Input.GetAxisRaw("Horizontal");
-		if(Input.GetButton("Run")){
+		if(Input.GetButton("Horizontal")){
 			//Run
 			rb.velocity = new Vector2(move*speed*Time.deltaTime*3,rb.velocity.y);
 			running=true;
@@ -103,7 +103,7 @@ public class Fox_Move : MonoBehaviour {
 
 	void Attack(){																//I activated the attack animation and when the 
 		//Atacking																//animation finish the event calls the AttackEnd()
-		if(Input.GetKeyDown(KeyCode.C)){
+		if(Input.GetButton("Fire1")){
 			rb.velocity=new Vector2(0,0);
 			anim.SetTrigger("Attack");
 			attacking=true;
@@ -115,7 +115,7 @@ public class Fox_Move : MonoBehaviour {
 	}
 
 	void Special(){
-		if(Input.GetKey(KeyCode.Space)){
+		if(Input.GetButton("Fire2")){
 			anim.SetBool("Special",true);
 		}else{
 			anim.SetBool("Special",false);
@@ -124,7 +124,7 @@ public class Fox_Move : MonoBehaviour {
 
 	void Crouch(){
 		//Crouch
-		if(Input.GetKey(KeyCode.DownArrow)){
+		if(Input.GetButton("Crouch")){
 			anim.SetBool("Crouching",true);
 		}else{
 			anim.SetBool("Crouching",false);
@@ -132,14 +132,14 @@ public class Fox_Move : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){							//Case of Bullet
-		if(other.tag=="Enemy"){
+		if(other.CompareTag("Enemy")){
 			anim.SetTrigger("Damage");
 			Hurt();
 		}
 	}								
 
 	void OnCollisionEnter2D(Collision2D other) {						//Case of Touch
-		if(other.gameObject.tag=="Enemy"){
+		if(other.gameObject.CompareTag("Enemy")){
 			anim.SetTrigger("Damage");
 			Hurt();
 		}
