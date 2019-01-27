@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d005370b84cf9904dab35eafbda7ccc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 100
   jumpForce: 300
   cooldownHit: 0
   running: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleOriginTransform: {fileID: 7489239631039011766}
-  retractSpeedIncreaseRate: 3
+  retractSpeedIncreaseRate: 2
 --- !u!120 &8610338462250113843
 LineRenderer:
   m_ObjectHideFlags: 0

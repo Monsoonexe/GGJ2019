@@ -25,11 +25,13 @@ public class GameManager : MonoBehaviour
     {
         SingletonPattern();
         audioSource = GetComponent<AudioSource>() as AudioSource;
+        Debug.Log("AWAKE");
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("START!");
         GetStartPosition();
         nextSpawnPoint = startPoint.position;
         LoadAudio();
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
     /// <param name="sceneNo"></param>
     private void OnLevelWasLoaded(int sceneNo)
     {
-        KillExistingPlayerIfAny();
+        //KillExistingPlayerIfAny();
 
         //where does the player start the level
         GetStartPosition();
@@ -83,8 +85,12 @@ public class GameManager : MonoBehaviour
         //init next spawn point
         nextSpawnPoint = startPoint.position;
 
+        GameObject.FindGameObjectWithTag("Player").transform.position = nextSpawnPoint;
+
+        LoadAudio();
+
         //create a new player object
-        Instantiate(playerPrefab, nextSpawnPoint, Quaternion.identity);
+        //Instantiate(playerPrefab, nextSpawnPoint, Quaternion.identity);
         
 
     }
@@ -132,7 +138,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(delay);
 
         //load next level
-        SceneManager.LoadScene(++sceneNo);
+        //SceneManager.LoadScene(++sceneNo);
+
+        //reload same level
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UpdateCheckPoint(Transform newCheckpoint)

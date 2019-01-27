@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c412f6f4fba84f6459a777ed5ec56c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: {x: 0, y: 5, z: 0}
+  rotateSpeed: {x: 0, y: 75, z: 0}
 --- !u!1001 &5290930207588534015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,11 +323,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8387837630457705428}
     m_Modifications:
-    - target: {fileID: 4398535930015445110, guid: 585fc11e92095f0498192d66e8970a63,
-        type: 3}
-      propertyPath: m_Name
-      value: VictoryWindow
-      objectReference: {fileID: 0}
     - target: {fileID: 4398535930015445111, guid: 585fc11e92095f0498192d66e8970a63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -432,6 +427,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398535930015445110, guid: 585fc11e92095f0498192d66e8970a63,
+        type: 3}
+      propertyPath: m_Name
+      value: VictoryWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398535930015445108, guid: 585fc11e92095f0498192d66e8970a63,
+        type: 3}
+      propertyPath: rotateSpeed.y
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4398535929142992123, guid: 585fc11e92095f0498192d66e8970a63,
         type: 3}

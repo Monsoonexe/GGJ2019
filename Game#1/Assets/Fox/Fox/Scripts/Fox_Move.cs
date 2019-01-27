@@ -81,10 +81,10 @@ public class Fox_Move : MonoBehaviour {
 
 	void Jump(){
 		//Jump
-		if(Input.GetButtonDown("Jump") && rb.velocity.y == 0){
-			rb.AddForce(new Vector2(0,jumpForce));
+		//if(Input.GetButtonDown("Jump") && rb.velocity.y == 0){
+		//	rb.AddForce(new Vector2(0,jumpForce));
 
-		}
+		//}
 		//Jump Animation
 		if(rb.velocity.y>0&&up==false){
 			up=true;
