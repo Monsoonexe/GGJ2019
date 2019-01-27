@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         playerInstance = GameObject.FindGameObjectWithTag("Player");
         playerInstance.transform.position = nextSpawnPoint;
 
+        Debug.Log("Scenes in list: " + SceneManager.sceneCountInBuildSettings);
+
     }
 
     // Update is called once per frame
@@ -138,7 +140,10 @@ public class GameManager : MonoBehaviour
             audioSource.Play();
 
             //do win animations
-            if (++sceneNo >= SceneManager.sceneCount) sceneNo = 0; // repeat when run out of scenes
+
+            //load next scene
+            if (++sceneNo >= SceneManager.sceneCountInBuildSettings) sceneNo = 0; // repeat when run out of scenes
+            Debug.Log("this scene no: " + sceneNo + " / " + SceneManager.sceneCountInBuildSettings);
             StartCoroutine(LoadLevelAfterDelay(winCelebrateSeconds, sceneNo));
 
         }
