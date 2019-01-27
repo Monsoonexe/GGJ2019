@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3527673994295141517}
   - component: {fileID: 5402098356726857403}
   - component: {fileID: 480753647}
-  - component: {fileID: 5357438017198901229}
+  - component: {fileID: 7737475106096856389}
   m_Layer: 0
   m_Name: opposum
   m_TagString: Enemy
@@ -166,7 +166,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
---- !u!114 &5357438017198901229
+--- !u!114 &7737475106096856389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,10 +175,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5105090365243174278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e0aeb75a6401df4b9670c7cd51ee254, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c0368eec8de1e448857c35540ded574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flingForce: 5
+  flingForce: 10
   wanderDistance: 3
   wanderSpeed: 1
-  wanderDirection: -1
+  wanderDirection: 1
