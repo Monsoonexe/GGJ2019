@@ -11,7 +11,8 @@ TagManager:
   - Enemy
   - GameManager
   - Level
-  - EnvironmentTle
+  - EnvironmentTile
+  - PlayerStart
   layers:
   - Default
   - TransparentFX
