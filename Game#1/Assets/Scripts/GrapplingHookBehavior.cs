@@ -102,7 +102,7 @@ public class GrapplingHookBehavior : MonoBehaviour
         if (hitInfo.collider)
         {
             Tilemap tileMap = hitInfo.collider.gameObject.GetComponent<Tilemap>() as Tilemap;
-            if (tileMap.HasTile(new Vector3Int(Mathf.RoundToInt(cursorClick.x), Mathf.RoundToInt(cursorClick.y), 0)))
+            if (tileMap && tileMap.HasTile(new Vector3Int(Mathf.RoundToInt(cursorClick.x), Mathf.RoundToInt(cursorClick.y), 0)))
             {
                 //retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
                 isGrappling = true;
