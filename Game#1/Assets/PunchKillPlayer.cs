@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PunchKillPlayer : StateMachineBehaviour
 {
-    private GameObject _player;
+    //public GameObject _player = GameObject.FindGameObjectWithTag("Player");
+    public GameObject _player;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -20,7 +21,7 @@ public class PunchKillPlayer : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _player.GetComponent<Fox_Move>().SendMessage("Dead");
+        _player.GetComponent<Fox_Move>().Dead();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -15,6 +15,7 @@ public class bearController : MonoBehaviour {
     public float walkSpeed;
 
     private bool facingRight = true;
+    private bool _attacking = false;
 
     //Used for flipping Character Direction
     public static Vector3 theScale;
@@ -32,6 +33,7 @@ public class bearController : MonoBehaviour {
         //		startTime = Time.time;
         anim = GetComponent<Animator>();
         _rigbod = GetComponent<Rigidbody2D>() as Rigidbody2D;
+        _attacking = false;
     }
 
     void FixedUpdate()
@@ -51,7 +53,7 @@ public class bearController : MonoBehaviour {
             anim.SetBool("ground", false);
         }
 
-        if (waypoints)
+        if (waypoints && !_attacking)
         {
             anim.SetFloat("HSpeed", 0.055f);
             if (facingRight)
@@ -69,15 +71,19 @@ public class bearController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        anim.SetFloat("HSpeed", 0f);
-        if (collision.GetComponent<Fox_Move>().attacking)
+        if (collision.CompareTag("Player"))
         {
-            GetComponent<Rigidbody2D>().AddForce(collision.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
-            StartCoroutine("RemoveBear", 2);
-            Destroy(this.gameObject);
+            _attacking = true;
+            anim.SetFloat("HSpeed", 0f);
+            if (collision.gameObject.GetComponent<Fox_Move>().attacking)
+            {
+                GetComponent<Rigidbody2D>().AddForce(collision.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
+                StartCoroutine("RemoveBear", 2);
+                Destroy(this.gameObject);
+            }
+            else
+                anim.SetTrigger("Punch");
         }
-        else
-            anim.SetTrigger("Punch");
     }
 
     private static IEnumerator RemoveBear(int delay)
