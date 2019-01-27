@@ -102,8 +102,11 @@ public class GrapplingHookBehavior : MonoBehaviour
         if (hitInfo.collider)
         {
             Tilemap tileMap = hitInfo.collider.gameObject.GetComponent<Tilemap>() as Tilemap;
+            if(tileMap) Debug.Log("TileMap Exists!");
+
             if (tileMap.HasTile(new Vector3Int(Mathf.RoundToInt(cursorClick.x), Mathf.RoundToInt(cursorClick.y), 0)))
             {
+                Debug.Log("Here");
                 //retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
                 isGrappling = true;
 
@@ -111,6 +114,10 @@ public class GrapplingHookBehavior : MonoBehaviour
                 lineRenderer.positionCount = 2;
                 lineRenderer.SetPosition(0, new Vector3(originPoint.x, originPoint.y, -1));
                 lineRenderer.SetPosition(1, new Vector3(hitInfo.point.x, hitInfo.point.y, -1));
+            }
+            else
+            {
+                Debug.Log("No tile at coordinates: " + cursorClick);
             }
            
             //switch on collider's tag to do specific things
