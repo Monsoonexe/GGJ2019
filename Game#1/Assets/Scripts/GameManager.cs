@@ -87,8 +87,11 @@ public class GameManager : MonoBehaviour
 
     private void KillExistingPlayerIfAny()
     {
-        GameObject extraPlayer = GameObject.FindGameObjectWithTag("Player");
-        if (extraPlayer) Destroy(extraPlayer);
+        GameObject[] extraPlayer = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var p in extraPlayer)
+        {
+            Destroy(p);
+        }
     }
 
     private void SingletonPattern()
