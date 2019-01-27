@@ -9,7 +9,6 @@ public class EnvironmentTriggers : MonoBehaviour
     public enum TriggerType { checkpoint, finish, death }
     public TriggerType _triggerType;
     private GameManager _gameManager;
-    private Fox_Move _player;
 
     private void Awake()
     {
@@ -20,7 +19,6 @@ public class EnvironmentTriggers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Fox_Move>() as Fox_Move;
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>() as GameManager;
     }
 
@@ -41,7 +39,7 @@ public class EnvironmentTriggers : MonoBehaviour
                     break;
                 case TriggerType.death:
                     Debug.Log("Death Trigger Activated");
-                    _player.SendMessage("Dead");
+                    collision.gameObject.SendMessage("Dead");
                     break;
                 case TriggerType.finish:
                     Debug.Log("Finish Trigger Activated");

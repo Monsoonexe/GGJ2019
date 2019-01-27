@@ -233,6 +233,7 @@ MonoBehaviour:
   attacking: 0
   special: 0
   qtdLife: 3
+  isGrappling: 0
 --- !u!114 &537272100944055762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleOriginTransform: {fileID: 7489239631039011766}
-  retractSpeedIncreaseRate: 1.1
+  retractSpeedIncreaseRate: 3
 --- !u!120 &8610338462250113843
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -293,7 +294,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.508982
+        value: 0.23848945
         inSlope: 0
         outSlope: 0
         tangentMode: 0
