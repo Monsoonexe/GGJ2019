@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5867984}
   - component: {fileID: 6101050}
   - component: {fileID: 5809852}
-  - component: {fileID: 354418256896151352}
+  - component: {fileID: 8323679540274866285}
   m_Layer: 9
   m_Name: 2D ToonBear
   m_TagString: Enemy
@@ -200,7 +200,7 @@ CircleCollider2D:
   m_Offset: {x: -0.03, y: -0.66}
   serializedVersion: 2
   m_Radius: 0.59
---- !u!114 &354418256896151352
+--- !u!114 &8323679540274866285
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,8 +209,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 189690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273b7e06ca4842f43aeee669cf108870, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e0aeb75a6401df4b9670c7cd51ee254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderDistance: 3
-  wanderSpeed: 3
+  flingForce: 10
+  wanderDistance: 5
+  wanderSpeed: 1
+  wanderDirection: 1
