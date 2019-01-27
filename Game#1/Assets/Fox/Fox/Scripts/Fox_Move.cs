@@ -12,7 +12,7 @@ public class Fox_Move : MonoBehaviour {
 	private float rateOfHit;
 	private GameObject[] life;
 	[SerializeField] private int qtdLife = 3;
-
+    private GameManager _gameManager;
     public bool isGrappling = false;
 
 	// Use this for initialization
@@ -27,6 +27,7 @@ public class Fox_Move : MonoBehaviour {
 		crouching=false;
 		rateOfHit=Time.time;
 		life=GameObject.FindGameObjectsWithTag("Life");
+        _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>() as GameManager;
 	}
 	
 	// Update is called once per frame
@@ -41,9 +42,9 @@ public class Fox_Move : MonoBehaviour {
 				Jump();
 				Crouch();
 			}
-			Dead();
+			//Dead();
 		}
-
+        //Dead();
 	}
 
 	void Movement(){
@@ -154,12 +155,10 @@ public class Fox_Move : MonoBehaviour {
 	}
 
 	void Dead(){
-		if(qtdLife<=0){
-			anim.SetTrigger("Dead");
-			dead=true;
-
-            isGrappling = false;
-		}
+        Debug.Log("I'm Dead");
+        GetComponent<Renderer>().enabled = false;
+        transform.position = _gameManager.GetSpawnPoint();
+        GetComponent<Renderer>().enabled = true;
 	}
 
 	public void TryAgain(){														//Just to Call the level again

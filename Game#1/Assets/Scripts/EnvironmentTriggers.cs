@@ -31,20 +31,23 @@ public class EnvironmentTriggers : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (_triggerType)
+        if (collision.CompareTag("Player"))
         {
-            case TriggerType.checkpoint:
-                Debug.Log("Checkpoint Trigger Activated");
-                _gameManager.UpdateCheckPoint(transform);
-                break;
-            case TriggerType.death:
-                Debug.Log("Death Trigger Activated");
-                _player.SendMessage("Dead");
-                break;
-            case TriggerType.finish:
-                Debug.Log("Finish Trigger Activated");
-                _gameManager.WinLevel();
-                break;
+            switch (_triggerType)
+            {
+                case TriggerType.checkpoint:
+                    Debug.Log("Checkpoint Trigger Activated");
+                    _gameManager.UpdateCheckPoint(transform);
+                    break;
+                case TriggerType.death:
+                    Debug.Log("Death Trigger Activated");
+                    _player.SendMessage("Dead");
+                    break;
+                case TriggerType.finish:
+                    Debug.Log("Finish Trigger Activated");
+                    _gameManager.WinLevel();
+                    break;
+            }
         }
     }
 }
