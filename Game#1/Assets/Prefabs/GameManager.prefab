@@ -50,7 +50,9 @@ MonoBehaviour:
     type: 3}
   playerPrefab: {fileID: 2384495116204862287, guid: 37f057e02711d5b4e937a4d7d25c2258,
     type: 3}
-  levelMusic: []
+  levelMusic:
+  - {fileID: 8300000, guid: e59f418f77d5d984a8c3378e10a13e24, type: 3}
+  victoryFanfare: {fileID: 8300000, guid: 925432de9d2caf34994f18bd043a302e, type: 3}
 --- !u!82 &1123037638
 AudioSource:
   m_ObjectHideFlags: 0
