@@ -22,7 +22,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SingletonPattern();
-        audioSource.clip = levelMusic[sceneNo];
+    }
+
+    private void LoadAudio()
+    {
+        if(audioSource && levelMusic.Length > sceneNo)
+        {
+            audioSource.clip = levelMusic[sceneNo];
+        }
     }
 
     // Start is called before the first frame update
