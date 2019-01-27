@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("START!");
         GetStartPosition();
         nextSpawnPoint = startPoint.position;
-        //LoadAudio();
+        LoadAudio();
 
     }
 
@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour
         nextSpawnPoint = startPoint.position;
 
         GameObject.FindGameObjectWithTag("Player").transform.position = nextSpawnPoint;
+
+        LoadAudio();
 
         //create a new player object
         //Instantiate(playerPrefab, nextSpawnPoint, Quaternion.identity);
