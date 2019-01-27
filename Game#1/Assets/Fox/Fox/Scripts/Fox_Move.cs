@@ -121,6 +121,7 @@ public class Fox_Move : MonoBehaviour {
             attacking = true;
 		}else{
 			anim.SetBool("Special",false);
+            attacking = false;
 		}
 	}
 
@@ -135,25 +136,12 @@ public class Fox_Move : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){							//Case of Bullet
 		if(other.CompareTag("Enemy")){
-			anim.SetTrigger("Damage");
-			Hurt();
+            if (attacking)
+                other.gameObject.GetComponent<EnemyController>().EnemyAttacked(rb.velocity);
+            else
+                Dead();
 		}
 	}								
-
-	void OnCollisionEnter2D(Collision2D other) {						//Case of Touch
-		if(other.gameObject.CompareTag("Enemy")){
-			anim.SetTrigger("Damage");
-			Hurt();
-		}
-	}
-
-	void Hurt(){
-		if(rateOfHit<Time.time){
-			rateOfHit=Time.time+cooldownHit;
-			Destroy(life[qtdLife-1]);
-			qtdLife-=1;
-		}
-	}
 
 	void Dead(){
         Debug.Log("I'm Dead");
