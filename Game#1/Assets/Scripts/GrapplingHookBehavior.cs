@@ -25,21 +25,14 @@ public class GrapplingHookBehavior : MonoBehaviour
 
     private void Awake()
     {
-        //external references
-        playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
-
-        //internal references
-        lineRenderer = GetComponent<LineRenderer>() as LineRenderer;
-        rb = GetComponent<Rigidbody2D>() as Rigidbody2D;
-        animator = GetComponent<Animator>() as Animator;
-        moveScript = GetComponent<Fox_Move>() as Fox_Move;
+        InitReferences();
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitReferences();
     }
 
     // Update is called once per frame
@@ -60,6 +53,19 @@ public class GrapplingHookBehavior : MonoBehaviour
         {
             HandleGrappling();
         }
+    }
+
+    private void InitReferences()
+    {
+        //external references
+        playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
+
+        //internal references
+        lineRenderer = GetComponent<LineRenderer>() as LineRenderer;
+        rb = GetComponent<Rigidbody2D>() as Rigidbody2D;
+        animator = GetComponent<Animator>() as Animator;
+        moveScript = GetComponent<Fox_Move>() as Fox_Move;
+
     }
 
     private void ReleaseGrapplingHook()
