@@ -9,12 +9,14 @@ public class GameManager : MonoBehaviour
     private static int sceneNo = 0;
 
     [SerializeField] private bool TESTING = false;
-    [SerializeField] private Transform startPoint;
     [SerializeField] private int winCelebrateSeconds = 5;
     [SerializeField] private GameObject victoryWindow;
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private AudioClip[] levelMusic;
+    private AudioSource audioSource;
 
+    private Transform startPoint;
     private Vector3 nextSpawnPoint;
 
     private void Awake()
@@ -22,10 +24,18 @@ public class GameManager : MonoBehaviour
         SingletonPattern();
     }
 
+    private void LoadAudio()
+    {
+        if(audioSource && levelMusic.Length > sceneNo)
+        {
+            audioSource.clip = levelMusic[sceneNo];
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-
+        GetStartPosition();
         nextSpawnPoint = startPoint.position;
 
     }
@@ -46,15 +56,39 @@ public class GameManager : MonoBehaviour
     private void GetStartPosition()
     {
         startPoint = GameObject.FindGameObjectWithTag("PlayerStart").transform;
+
+        if (!startPoint)
+        {
+            Debug.LogError("ERROR! No start point in scene!!!");
+        }
     }
 
+    /// <summary>
+    /// Whateva! I do what I want!
+    /// </summary>
+    /// <param name="sceneNo"></param>
     private void OnLevelWasLoaded(int sceneNo)
     {
+        KillExistingPlayerIfAny();
+
+        //where does the player start the level
         GetStartPosition();
+
+        //init next spawn point
         nextSpawnPoint = startPoint.position;
-        victoryWindow.SetActive(false);
+
+        //create a new player object
         Instantiate(playerPrefab, nextSpawnPoint, Quaternion.identity);
 
+
+
+
+    }
+
+    private void KillExistingPlayerIfAny()
+    {
+        GameObject extraPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (extraPlayer) Destroy(extraPlayer);
     }
 
     private void SingletonPattern()
@@ -73,7 +107,7 @@ public class GameManager : MonoBehaviour
     public void WinLevel()
     {
         //say congrats!
-        victoryWindow.SetActive(true);
+        Instantiate(victoryWindow);
 
         //do win animations
         StartCoroutine(LoadLevelAfterDelay(winCelebrateSeconds));
