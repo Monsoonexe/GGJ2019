@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour
 
     private Transform startPoint;
     private Vector3 nextSpawnPoint;
-
+    private bool levelIsWon = false;
+    
     private void Awake()
     {
         SingletonPattern();
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         GetStartPosition();
         nextSpawnPoint = startPoint.position;
         LoadAudio();
+        levelIsWon = false;
 
     }
 
@@ -89,6 +91,8 @@ public class GameManager : MonoBehaviour
 
         LoadAudio();
 
+        levelIsWon = false;
+
         //create a new player object
         //Instantiate(playerPrefab, nextSpawnPoint, Quaternion.identity);
         
@@ -119,13 +123,21 @@ public class GameManager : MonoBehaviour
 
     public void WinLevel()
     {
-        //say congrats!
-        Instantiate(victoryWindow);
-        audioSource.clip = victoryFanfare;
-        audioSource.Play();
+        //ensure level can only be "won" once per level
+        if (!levelIsWon)
+        {
+            //flag
+            levelIsWon = true;
 
-        //do win animations
-        StartCoroutine(LoadLevelAfterDelay(winCelebrateSeconds));
+            //say congrats!
+            Instantiate(victoryWindow);
+            audioSource.clip = victoryFanfare;
+            audioSource.Play();
+
+            //do win animations
+            StartCoroutine(LoadLevelAfterDelay(winCelebrateSeconds));
+
+        }
 
     }
 
