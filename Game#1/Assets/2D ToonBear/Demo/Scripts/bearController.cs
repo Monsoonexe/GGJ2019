@@ -77,18 +77,18 @@ public class bearController : MonoBehaviour {
             anim.SetFloat("HSpeed", 0f);
             if (collision.gameObject.GetComponent<Fox_Move>().attacking)
             {
-                GetComponent<Rigidbody2D>().AddForce(collision.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
+                GetComponent<Rigidbody2D>().AddForce(collision.GetComponent<Rigidbody2D>().velocity * 20, ForceMode2D.Impulse);
                 StartCoroutine("RemoveBear", 2);
-                Destroy(this.gameObject);
             }
             else
                 anim.SetTrigger("Punch");
         }
     }
 
-    private static IEnumerator RemoveBear(int delay)
+    private IEnumerator RemoveBear(int delay)
     {
         yield return new WaitForSecondsRealtime(delay);
+        Destroy(this.gameObject);
     }
     ////Flipping direction of character
     void Flip()

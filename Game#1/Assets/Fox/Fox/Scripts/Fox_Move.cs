@@ -118,6 +118,7 @@ public class Fox_Move : MonoBehaviour {
 	void Special(){
 		if(Input.GetButton("Fire2")){
 			anim.SetBool("Special",true);
+            attacking = true;
 		}else{
 			anim.SetBool("Special",false);
 		}
