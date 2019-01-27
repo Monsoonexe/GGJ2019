@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject victoryWindow;
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private AudioClip[] levelMusic;
+    private AudioSource audioSource;
 
     private Transform startPoint;
     private Vector3 nextSpawnPoint;
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SingletonPattern();
+        audioSource.clip = levelMusic[sceneNo];
     }
 
     // Start is called before the first frame update
@@ -69,6 +72,8 @@ public class GameManager : MonoBehaviour
 
         //create a new player object
         Instantiate(playerPrefab, nextSpawnPoint, Quaternion.identity);
+
+
 
 
     }
