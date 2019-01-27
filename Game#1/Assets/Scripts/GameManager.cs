@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private Transform startPoint;
     private Vector3 nextSpawnPoint;
     private bool levelIsWon = false;
+    private GameObject playerInstance;
     
     private void Awake()
     {
@@ -37,6 +38,8 @@ public class GameManager : MonoBehaviour
         nextSpawnPoint = startPoint.position;
         LoadAudio();
         levelIsWon = false;
+        playerInstance = GameObject.FindGameObjectWithTag("Player");
+        playerInstance.transform.position = nextSpawnPoint;
 
     }
 
