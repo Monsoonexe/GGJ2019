@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         GetStartPosition();
         nextSpawnPoint = startPoint.position;
-        LoadAudio();
+        //LoadAudio();
 
     }
 
@@ -132,7 +132,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(delay);
 
         //load next level
-        SceneManager.LoadScene(++sceneNo);
+        //SceneManager.LoadScene(++sceneNo);
+
+        //reload same level
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UpdateCheckPoint(Transform newCheckpoint)
