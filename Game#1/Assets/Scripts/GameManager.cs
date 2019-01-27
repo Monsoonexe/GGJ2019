@@ -9,12 +9,12 @@ public class GameManager : MonoBehaviour
     private static int sceneNo = 0;
 
     [SerializeField] private bool TESTING = false;
-    [SerializeField] private Transform startPoint;
     [SerializeField] private int winCelebrateSeconds = 5;
     [SerializeField] private GameObject victoryWindow;
 
     [SerializeField] private GameObject playerPrefab;
 
+    private Transform startPoint;
     private Vector3 nextSpawnPoint;
 
     private void Awake()
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GetStartPosition();
         nextSpawnPoint = startPoint.position;
 
     }
