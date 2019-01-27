@@ -8,84 +8,89 @@ using System;
 
 public class bearController : MonoBehaviour {
 
+    public bool waypoints;
+
     public Transform Waypoint1;
     public Transform Waypoint2;
+    public float walkSpeed;
 
-	private bool facingRight = true;
-    
+    private bool facingRight = true;
+
     //Used for flipping Character Direction
-	public static Vector3 theScale;
+    public static Vector3 theScale;
 
-	//Jumping Stuff
-	private bool grounded = false;
-	private float groundRadius = 0.15f;
+    //Jumping Stuff
+    private bool grounded = false;
+    private float groundRadius = 0.15f;
 
-	private Animator anim;
+    private Animator anim;
     private Rigidbody2D _rigbod;
 
-	// Use this for initialization
-	void Awake ()
-	{
-//		startTime = Time.time;
-		anim = GetComponent<Animator> ();
+    // Use this for initialization
+    void Awake()
+    {
+        //		startTime = Time.time;
+        anim = GetComponent<Animator>();
         _rigbod = GetComponent<Rigidbody2D>() as Rigidbody2D;
-	}
+    }
 
-	void FixedUpdate ()
-	{
+    void FixedUpdate()
+    {
         if (_rigbod.velocity.y == 0)
             grounded = true;
         else
             grounded = false;
 
         anim.SetBool("ground", grounded);
-	}
+    }
 
-	void Update()
-	{
+    void Update() {
 
-        moveXInput = Input.GetAxis("Horizontal");
-
-        if ((grounded) && Input.GetButtonDown("Jump"))
+        if (!grounded)
         {
             anim.SetBool("ground", false);
-
-            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.y, jumpForce);
         }
 
-
-        anim.SetFloat("HSpeed", Mathf.Abs(moveXInput));
-        anim.SetFloat("vSpeed", GetComponent<Rigidbody2D>().velocity.y);
-
-
-        GetComponent<Rigidbody2D>().velocity = new Vector2((moveXInput * HSpeed), GetComponent<Rigidbody2D>().velocity.y);
-
-        if (Input.GetButtonDown("Fire1") && (grounded)) { anim.SetTrigger("Punch"); }
-
-        if (Input.GetButton("Fire2"))
+        if (waypoints)
         {
-            anim.SetBool("Sprint", true);
-            HSpeed = 14f;
-}
+            anim.SetFloat("HSpeed", 0.055f);
+            if (facingRight)
+                transform.position = Vector3.Lerp(transform.position, Waypoint2.position, 0.5f * Time.deltaTime);
+            else
+                transform.position = Vector3.Lerp(transform.position, Waypoint1.position, 0.5f * Time.deltaTime);
+
+            //Flipping direction character is facing based on players Input
+            if (Vector3.Distance(transform.position, Waypoint1.position) < 1)
+                Flip();
+            else if (Vector3.Distance(transform.position, Waypoint2.position) < 1)
+                Flip();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        anim.SetFloat("HSpeed", 0f);
+        if (collision.GetComponent<Fox_Move>().attacking)
+        {
+            GetComponent<Rigidbody2D>().AddForce(collision.GetComponent<Rigidbody2D>().velocity, ForceMode2D.Impulse);
+            StartCoroutine("RemoveBear", 2);
+            Destroy(this.gameObject);
+        }
         else
-        {
-            anim.SetBool("Sprint", false);
-            HSpeed = 10f;
-        }
+            anim.SetTrigger("Punch");
+    }
 
-        //Flipping direction character is facing based on players Input
-        if (moveXInput > 0 && !facingRight)
-            Flip();
-        else if (moveXInput < 0 && facingRight)
-            Flip();
+    private static IEnumerator RemoveBear(int delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
     }
     ////Flipping direction of character
     void Flip()
-	{
-		facingRight = !facingRight;
-		theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-	}
+    {
+        facingRight = !facingRight;
+        theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
 
 }
