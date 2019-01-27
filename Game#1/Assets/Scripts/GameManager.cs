@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private AudioClip[] levelMusic;
+    [SerializeField] private AudioClip victoryFanfare;
+
     private AudioSource audioSource;
 
     private Transform startPoint;
@@ -22,14 +24,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SingletonPattern();
-    }
-
-    private void LoadAudio()
-    {
-        if(audioSource && levelMusic.Length > sceneNo)
-        {
-            audioSource.clip = levelMusic[sceneNo];
-        }
+        audioSource = GetComponent<AudioSource>() as AudioSource;
     }
 
     // Start is called before the first frame update
@@ -37,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         GetStartPosition();
         nextSpawnPoint = startPoint.position;
+        LoadAudio();
 
     }
 
@@ -50,7 +46,17 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
-        
+
+    }
+
+    private void LoadAudio()
+    {
+        if (audioSource && levelMusic.Length > sceneNo)
+        {
+            audioSource.clip = levelMusic[sceneNo >= levelMusic.Length ? levelMusic.Length - 1 : sceneNo];
+
+            audioSource.Play();
+        }
     }
 
     private void GetStartPosition()
@@ -79,9 +85,7 @@ public class GameManager : MonoBehaviour
 
         //create a new player object
         Instantiate(playerPrefab, nextSpawnPoint, Quaternion.identity);
-
-
-
+        
 
     }
 
@@ -111,6 +115,8 @@ public class GameManager : MonoBehaviour
     {
         //say congrats!
         Instantiate(victoryWindow);
+        audioSource.clip = victoryFanfare;
+        audioSource.Play();
 
         //do win animations
         StartCoroutine(LoadLevelAfterDelay(winCelebrateSeconds));
