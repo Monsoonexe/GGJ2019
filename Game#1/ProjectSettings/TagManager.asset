@@ -12,6 +12,7 @@ TagManager:
   - GameManager
   - Level
   - EnvironmentTile
+  - PlayerStart
   layers:
   - Default
   - TransparentFX
