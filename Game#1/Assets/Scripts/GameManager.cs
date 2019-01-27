@@ -24,14 +24,6 @@ public class GameManager : MonoBehaviour
         SingletonPattern();
     }
 
-    private void LoadAudio()
-    {
-        if(audioSource && levelMusic.Length > sceneNo)
-        {
-            audioSource.clip = levelMusic[sceneNo];
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +42,15 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
-        
+
+    }
+
+    private void LoadAudio()
+    {
+        if (audioSource && levelMusic.Length > sceneNo)
+        {
+            audioSource.clip = levelMusic[sceneNo >= levelMusic.Length ? levelMusic.Length - 1 : sceneNo];
+        }
     }
 
     private void GetStartPosition()
