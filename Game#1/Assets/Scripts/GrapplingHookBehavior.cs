@@ -23,7 +23,7 @@ public class GrapplingHookBehavior : MonoBehaviour
     //private Coroutine coroutine_removeGrapplingHookAfter
 
     private readonly string grapplingHookButton = "Fire1";
-    private readonly static int maxGrappleHookDistance = 50;
+    [SerializeField] private int maxGrappleHookDistance = 5;
 
     private void Awake()
     {
@@ -117,20 +117,6 @@ public class GrapplingHookBehavior : MonoBehaviour
 
         if (hitInfo.collider)
         {
-            Tilemap tileMap = hitInfo.collider.gameObject.GetComponent<Tilemap>() as Tilemap;
-            if (tileMap && tileMap.HasTile(new Vector3Int(Mathf.RoundToInt(cursorClick.x), Mathf.RoundToInt(cursorClick.y), 0)))
-            {
-                //retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
-                isGrappling = true;
-
-                grapplingHookEndpoint = hitInfo.point;
-
-                //handle line renderer
-                lineRenderer.positionCount = 2;
-                lineRenderer.SetPosition(0, new Vector3(originPoint.x, originPoint.y, -1));
-                lineRenderer.SetPosition(1, new Vector3(hitInfo.point.x, hitInfo.point.y, -1));
-            }
-           
             //switch on collider's tag to do specific things
             switch (hitInfo.collider.gameObject.tag)
             {
@@ -142,16 +128,33 @@ public class GrapplingHookBehavior : MonoBehaviour
                 //if environment
                 case "EnvironmentTile":
                     Debug.Log("Grappling Hook hit environment!");
+
+                    //retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
+                    isGrappling = true;
+
+                    grapplingHookEndpoint = hitInfo.point;
+
+                    //handle line renderer
+                    lineRenderer.positionCount = 2;
+                    lineRenderer.SetPosition(0, new Vector3(originPoint.x, originPoint.y, -1));
+                    lineRenderer.SetPosition(1, new Vector3(hitInfo.point.x, hitInfo.point.y, -1));
+                    break;
+
+                default:
+                    Debug.Log("No TAG!");
                     break;
             }
+        }
 
-            
-        }
-        else
-        {
-            Debug.Log("Raycast hit nothing....");
-        }
         
+
+
+        //Tilemap tileMap = hitInfo.collider.gameObject.GetComponent<Tilemap>() as Tilemap;
+        //if (tileMap && tileMap.HasTile(new Vector3Int(Mathf.RoundToInt(cursorClick.x), Mathf.RoundToInt(cursorClick.y), 0)))
+        //{
+
+        //}
+           
 
 
     }

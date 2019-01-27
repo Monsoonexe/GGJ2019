@@ -2162,6 +2162,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 537272100944055762, guid: 37f057e02711d5b4e937a4d7d25c2258,
+        type: 3}
+      propertyPath: retractSpeedIncreaseRate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37f057e02711d5b4e937a4d7d25c2258, type: 3}
 --- !u!1001 &1381381092
@@ -2535,7 +2540,7 @@ GameObject:
   - component: {fileID: 1672152710}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: EnvironmentTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
