@@ -8,6 +8,8 @@ public class EnvironmentTriggers : MonoBehaviour
 {
     public enum TriggerType { checkpoint, finish, death }
     public TriggerType _triggerType;
+    public Sprite sprite1;
+    public Sprite sprite2;
     private GameManager _gameManager;
     private Fox_Move _player;
 
@@ -22,6 +24,15 @@ public class EnvironmentTriggers : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Fox_Move>() as Fox_Move;
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>() as GameManager;
+        if (_triggerType == TriggerType.checkpoint)
+        {
+            if (this.gameObject.GetComponent<SpriteRenderer>() == null)
+            {
+                this.gameObject.AddComponent<SpriteRenderer>();
+                this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite1;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -38,6 +49,7 @@ public class EnvironmentTriggers : MonoBehaviour
                 case TriggerType.checkpoint:
                     Debug.Log("Checkpoint Trigger Activated");
                     _gameManager.UpdateCheckPoint(transform);
+                    this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
                     break;
                 case TriggerType.death:
                     Debug.Log("Death Trigger Activated");
