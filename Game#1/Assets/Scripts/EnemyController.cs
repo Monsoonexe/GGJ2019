@@ -103,6 +103,7 @@ public class EnemyController : MonoBehaviour {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(defaultX, otherVel.y) * 20, ForceMode2D.Impulse);
         else
             GetComponent<Rigidbody2D>().AddForce(new Vector2(otherVel.x, defaultY) * 20, ForceMode2D.Impulse);
+        StartCoroutine("RemoveEnemy",1);
     }
 
     private IEnumerator RemoveEnemy(int delay)
