@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 5105090365243174277}
   - component: {fileID: 5105090365243174276}
   - component: {fileID: 5105090365243174279}
-  - component: {fileID: 5105090365243174298}
   - component: {fileID: 3527673994295141517}
   - component: {fileID: 5402098356726857403}
-  - component: {fileID: 480753646}
   - component: {fileID: 480753647}
+  - component: {fileID: 5357438017198901229}
   m_Layer: 0
   m_Name: opposum
   m_TagString: Enemy
@@ -104,20 +103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5105090365243174298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5105090365243174278}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a1b52d60f1d2a040aa1cb6020c9fe55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  offset: {x: 0, y: 0}
 --- !u!50 &3527673994295141517
 Rigidbody2D:
   serializedVersion: 4
@@ -126,7 +111,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5105090365243174278}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -165,20 +150,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &480753646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5105090365243174278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13a8a4004c83224a8b245eb24cfcfe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderDistance: 5
-  wanderSpeed: 1
 --- !u!58 &480753647
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -195,3 +166,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &5357438017198901229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5105090365243174278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0aeb75a6401df4b9670c7cd51ee254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderDistance: 3
+  wanderSpeed: 10

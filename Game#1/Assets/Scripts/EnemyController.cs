@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour {
     [SerializeField] private float wanderDistance;
     [SerializeField] private float wanderSpeed;
 
-    private int wanderDirection = 1;
+    [SerializeField] private int wanderDirection = 1;//left or right
     private Vector3 startingPosition;
     private bool _attacking = false;
 
@@ -66,7 +66,6 @@ public class EnemyController : MonoBehaviour {
             float distanceFromPivot = Vector3.Distance(startingPosition, transform.position);
             if (distanceFromPivot >= wanderDistance)
             {
-                wanderDirection *= -1;
                 Flip();
             }
         }
@@ -114,9 +113,7 @@ public class EnemyController : MonoBehaviour {
     ////Flipping direction of character
     void Flip()
     {
-        theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        transform.Rotate(new Vector3(0, 180, 0));
     }
 
 }
