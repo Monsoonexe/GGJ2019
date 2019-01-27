@@ -95,12 +95,10 @@ public class GrapplingHookBehavior : MonoBehaviour
         float distanceToHook = Vector3.Distance(transform.position, grapplingHookEndpoint);
         if (distanceToHook <= 1f)
         {
-            Debug.Log("Distance limit reached!");
+            //Debug.Log("Distance limit reached!");
             ReleaseGrapplingHook();
         }
-
-        Debug.Log("Distance to Hook: " + distanceToHook);
-
+        
 
     }
 
