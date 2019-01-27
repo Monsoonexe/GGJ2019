@@ -90,8 +90,15 @@ public class EnemyController : MonoBehaviour {
     {
         Vector3 pushDirection = attackerPosition - transform.position;
         pushDirection = new Vector3(pushDirection.x, pushDirection.y + 5, pushDirection.z);
+
         _rigbod.isKinematic = false;
-        this.GetComponent<BoxCollider2D>().enabled = false;
+        Collider2D[] colliders = GetComponents<Collider2D>();
+        //Debug.Log(colliders.Length);
+        foreach(var col in colliders)
+        {
+            col.enabled = false;
+        }
+        
         _rigbod.AddForce((pushDirection) * flingForce, ForceMode2D.Impulse);
         Destroy(this.gameObject, 3);
     }
