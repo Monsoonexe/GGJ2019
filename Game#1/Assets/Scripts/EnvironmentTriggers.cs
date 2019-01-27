@@ -47,12 +47,15 @@ public class EnvironmentTriggers : MonoBehaviour
         switch (_trigType)
         {
             case TriggerType.checkpoint:
+                Debug.Log("Checkpoint Trigger Activated");
                 _gameManager.UpdateCheckPoint(transform);
                 break;
             case TriggerType.death:
+                Debug.Log("Death Trigger Activated");
                 _player.SendMessage("Dead");
                 break;
             case TriggerType.finish:
+                Debug.Log("Finish Trigger Activated");
                 _gameManager.WinLevel();
                 break;
         }
