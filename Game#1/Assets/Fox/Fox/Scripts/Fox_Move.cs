@@ -137,7 +137,7 @@ public class Fox_Move : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){							//Case of Bullet
 		if(other.CompareTag("Enemy")){
             if (attacking)
-                other.gameObject.GetComponent<EnemyController>().EnemyAttacked(rb.velocity);
+                other.gameObject.GetComponent<EnemyController>().EnemyAttacked(this.transform.position);
             else
                 Dead();
 		}

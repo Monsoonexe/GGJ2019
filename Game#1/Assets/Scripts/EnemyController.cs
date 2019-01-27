@@ -8,7 +8,7 @@ using System;
 
 public class EnemyController : MonoBehaviour {
 
-
+    [SerializeField] private int flingForce = 10;
     [SerializeField] private float wanderDistance;
     [SerializeField] private float wanderSpeed;
 
@@ -86,24 +86,14 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    public void EnemyAttacked(Vector2 otherVel)
+    public void EnemyAttacked(Vector3 attackerPosition)
     {
-        if (anim != null)
-        {
-            anim.SetFloat("HSpeed", 0f);
-        }
-        float defaultX = 3f;
-        float defaultY = 3f;
-        grounded = false;
-        if (otherVel.x != 0 && otherVel.y != 0)
-            GetComponent<Rigidbody2D>().AddForce(otherVel * 20, ForceMode2D.Impulse);
-        else if (otherVel.x == 0 && otherVel.y == 0)
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(defaultX, defaultY) * 20, ForceMode2D.Impulse);
-        else if (otherVel.x == 0)
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(defaultX, otherVel.y) * 20, ForceMode2D.Impulse);
-        else
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(otherVel.x, defaultY) * 20, ForceMode2D.Impulse);
-        StartCoroutine("RemoveEnemy",1);
+        Vector3 pushDirection = attackerPosition - transform.position;
+        pushDirection = new Vector3(pushDirection.x, pushDirection.y + 5, pushDirection.z);
+        _rigbod.isKinematic = false;
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        _rigbod.AddForce((pushDirection) * flingForce, ForceMode2D.Impulse);
+        Destroy(this.gameObject, 3);
     }
 
     private IEnumerator RemoveEnemy(int delay)

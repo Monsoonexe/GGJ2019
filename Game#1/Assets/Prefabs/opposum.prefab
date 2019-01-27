@@ -178,5 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0aeb75a6401df4b9670c7cd51ee254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flingForce: 5
   wanderDistance: 3
-  wanderSpeed: 10
+  wanderSpeed: 1
+  wanderDirection: -1
