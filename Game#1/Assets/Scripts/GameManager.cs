@@ -138,7 +138,8 @@ public class GameManager : MonoBehaviour
             audioSource.Play();
 
             //do win animations
-            StartCoroutine(LoadLevelAfterDelay(winCelebrateSeconds));
+            if (++sceneNo >= SceneManager.sceneCount) sceneNo = 0; // repeat when run out of scenes
+            StartCoroutine(LoadLevelAfterDelay(winCelebrateSeconds, sceneNo));
 
         }
 
@@ -148,15 +149,15 @@ public class GameManager : MonoBehaviour
     /// Wait for some seconds for animations, then load next level
     /// </summary>
     /// <returns></returns>
-    private static IEnumerator LoadLevelAfterDelay(int delay)
+    private static IEnumerator LoadLevelAfterDelay(int delay, int sceneToLoad)
     {
         yield return new WaitForSecondsRealtime(delay);
 
         //load next level
-        //SceneManager.LoadScene(++sceneNo);
+        SceneManager.LoadScene(sceneToLoad);
 
         //reload same level
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UpdateCheckPoint(Transform newCheckpoint)
