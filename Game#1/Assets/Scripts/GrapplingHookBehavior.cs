@@ -88,7 +88,7 @@ public class GrapplingHookBehavior : MonoBehaviour
 
     private void ShootGrapplingHook()
     {
-        //Debug.Log("Shooting hook....");
+        Debug.Log("Shooting hook....");
         //get mouse position in the world
         Vector2 cursorClick = playerCam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 originPoint = grappleOriginTransform.position;
