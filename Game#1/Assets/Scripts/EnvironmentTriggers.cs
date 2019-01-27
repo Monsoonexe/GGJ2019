@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class EnvironmentTriggers : MonoBehaviour
 {
-    enum TriggerType { checkpoint, finish, death }
-    public string _triggerType;
-    private TriggerType _trigType;
+    public enum TriggerType { checkpoint, finish, death }
+    public TriggerType _triggerType;
     private GameManager _gameManager;
     private Fox_Move _player;
 
@@ -23,18 +22,6 @@ public class EnvironmentTriggers : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Fox_Move>() as Fox_Move;
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>() as GameManager;
-        switch(_triggerType)
-        {
-            case "checkpoint":
-                _trigType = TriggerType.checkpoint;
-                break;
-            case "finsh":
-                _trigType = TriggerType.finish;
-                break;
-            case "death":
-                _trigType = TriggerType.death;
-                break;
-        }
     }
 
     // Update is called once per frame
@@ -44,7 +31,7 @@ public class EnvironmentTriggers : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (_trigType)
+        switch (_triggerType)
         {
             case TriggerType.checkpoint:
                 Debug.Log("Checkpoint Trigger Activated");
