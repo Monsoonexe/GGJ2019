@@ -62,12 +62,21 @@ public class EnemyController : MonoBehaviour {
             {
                 anim.SetFloat("HSpeed", 0.055f);
             }
-            transform.Translate(new Vector3(Time.deltaTime * wanderSpeed * wanderDirection, 0, 0));
+
+            float moveAmount = Time.deltaTime * wanderSpeed * wanderDirection;
             float distanceFromPivot = Vector3.Distance(startingPosition, transform.position);
-            if (distanceFromPivot + (Time.deltaTime * wanderSpeed * wanderDirection) >= wanderDistance)
+
+            if (distanceFromPivot + moveAmount >= wanderDistance)
             {
                 Flip();
             }
+            else
+            {
+                transform.Translate(new Vector3(Time.deltaTime * wanderSpeed * wanderDirection, 0, 0));
+
+            }
+
+            
         }
 
     }
