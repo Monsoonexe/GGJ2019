@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grappleOriginTransform: {fileID: 119}
   retractSpeedIncreaseRate: 1.75
-  maxGrappleHookDistance: 7
+  maxGrappleHookDistance: 8
 --- !u!120 &125
 LineRenderer:
   m_ObjectHideFlags: 0
