@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour {
             {
                 Flip();
 
-                transform.Translate(new Vector3(Time.deltaTime * wanderSpeed * 2 * wanderDirection, 0, 0));
+                transform.Translate(new Vector3(Time.deltaTime * wanderSpeed * 4 * wanderDirection, 0, 0)); // course correction
             }
             else
             {
