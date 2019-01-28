@@ -148,6 +148,7 @@ public class Fox_Move : MonoBehaviour {
         GetComponent<Renderer>().enabled = false;
         transform.position = _gameManager.GetSpawnPoint();
         GetComponent<Renderer>().enabled = true;
+        attacking = false;
 	}
 
 	public void TryAgain(){														//Just to Call the level again
