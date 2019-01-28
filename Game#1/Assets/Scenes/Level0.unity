@@ -874,6 +874,11 @@ PrefabInstance:
       propertyPath: wanderDirection
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 6703853447686124690, guid: 5b7b38957345cf64bab8f2f3e2cf619b,
+        type: 3}
+      propertyPath: flingForce
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7737475106096856389, guid: 5b7b38957345cf64bab8f2f3e2cf619b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b7b38957345cf64bab8f2f3e2cf619b, type: 3}

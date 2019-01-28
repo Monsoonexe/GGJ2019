@@ -409,6 +409,11 @@ PrefabInstance:
       propertyPath: wanderDistance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8323679540274866285, guid: 4fafe4882143b794d89de7a74ee788cb,
+        type: 3}
+      propertyPath: flingForce
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 4fafe4882143b794d89de7a74ee788cb, type: 3}
@@ -45616,6 +45621,11 @@ PrefabInstance:
       propertyPath: wanderDistance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8323679540274866285, guid: 4fafe4882143b794d89de7a74ee788cb,
+        type: 3}
+      propertyPath: flingForce
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fafe4882143b794d89de7a74ee788cb, type: 3}
 --- !u!4 &1745769299 stripped
@@ -45761,6 +45771,11 @@ PrefabInstance:
         type: 3}
       propertyPath: wanderDistance
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8323679540274866285, guid: 4fafe4882143b794d89de7a74ee788cb,
+        type: 3}
+      propertyPath: flingForce
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fafe4882143b794d89de7a74ee788cb, type: 3}
