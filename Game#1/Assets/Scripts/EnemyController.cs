@@ -65,14 +65,18 @@ public class EnemyController : MonoBehaviour {
 
             float moveAmount = Time.deltaTime * wanderSpeed * wanderDirection;
             float distanceFromPivot = Vector3.Distance(startingPosition, transform.position);
+            transform.Translate(new Vector3(Time.deltaTime * wanderSpeed * wanderDirection, 0, 0));
 
-            if (distanceFromPivot + moveAmount >= wanderDistance)
+            if (distanceFromPivot + moveAmount > wanderDistance)
             {
                 Flip();
+
+                transform.Translate(new Vector3(Time.deltaTime * wanderSpeed * 2 * wanderDirection, 0, 0));
             }
             else
             {
-                transform.Translate(new Vector3(Time.deltaTime * wanderSpeed * wanderDirection, 0, 0));
+
+                //moveAmount = Time.deltaTime * wanderSpeed * wanderDirection;
 
             }
 
