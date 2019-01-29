@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3056625240668485800}
   - component: {fileID: 3056625240668485801}
   - component: {fileID: 3056625240668485806}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EnvironmentTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,3 +71,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerType: 0
+  sprite1: {fileID: 0}
+  sprite2: {fileID: 0}
