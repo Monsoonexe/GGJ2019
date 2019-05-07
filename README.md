@@ -2,5 +2,6 @@
 Global Game Jam 2019
 
 Team Members:
-Dustin Adair - ScaryRobot
+Chris
 Richard Osborn - UnityUNLV
+Pon
