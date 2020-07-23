@@ -41,12 +41,9 @@ public class EnemyController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (_rigbod.velocity.y == 0)
-            grounded = true;
-        else
-            grounded = false;
-        if (anim != null)
-            anim.SetBool("ground", grounded);
+        grounded = _rigbod.velocity.y == 0;
+
+        anim?.SetBool("ground", grounded);
     }
 
     void Update() {
