@@ -34,6 +34,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+#3rd party assets
 Game#1/Assets/Animated Trap/SpriteSheets/Trap_0.controller
 Game#1/Assets/Animated Trap/SpriteSheets/Trap_0.controller
 Game#1/Assets/Animated Trap/SpriteSheets/Trap_0.controller
@@ -70,4 +72,3 @@ Game#1/Assets/Fantasy Lands/Prefabs/Vegetation/Trees/Tree4.prefab
 Game#1/Assets/Fantasy Lands/Prefabs/Vegetation/Trees/Tree6.prefab
 Game#1/Assets/Fox/Demo/Fox_Demo.unity
 Game#1/Assets/Animated Trap/SpriteSheets/Trap_0.controller
-*.meta
