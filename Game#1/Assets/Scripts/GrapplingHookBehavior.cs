@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(LineRenderer))]
-public class GrapplingHookBehavior : MonoBehaviour
+public class GrapplingHookBehavior : RichMonoBehaviour
 {
     [SerializeField] private Transform grappleOriginTransform;
     [SerializeField] private float retractSpeedIncreaseRate = 1.1f;
@@ -24,18 +24,6 @@ public class GrapplingHookBehavior : MonoBehaviour
 
     private readonly string grapplingHookButton = "Fire1";
     [SerializeField] private int maxGrappleHookDistance = 5;
-
-    private void Awake()
-    {
-        InitReferences();
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        InitReferences();
-    }
 
     // Update is called once per frame
     void Update()
@@ -57,8 +45,9 @@ public class GrapplingHookBehavior : MonoBehaviour
         }
     }
 
-    private void InitReferences()
+    protected override void GatherReferences()
     {
+        base.GatherReferences();
         //external references
         playerCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
 
