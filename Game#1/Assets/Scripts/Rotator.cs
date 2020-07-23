@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotator : MonoBehaviour
+namespace GrappleFox
 {
-
-    [SerializeField] private Vector3 rotateSpeed;
-    private Transform cachedXform;
-    // Start is called before the first frame update
-    void Start()
+    public class Rotator : MonoBehaviour
     {
-        cachedXform = this.transform;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        cachedXform.Rotate(rotateSpeed * Time.deltaTime);
+        [SerializeField] private Vector3 rotateSpeed;
+        private Transform cachedXform;
+        // Start is called before the first frame update
+        void Start()
+        {
+            cachedXform = this.transform;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            cachedXform.Rotate(rotateSpeed * Time.deltaTime);
+        }
     }
 }
