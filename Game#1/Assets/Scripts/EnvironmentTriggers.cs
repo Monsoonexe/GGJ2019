@@ -24,11 +24,12 @@ public class EnvironmentTriggers : MonoBehaviour
         _gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>() as GameManager;
         if (_triggerType == TriggerType.checkpoint)
         {
-            if (this.gameObject.GetComponent<SpriteRenderer>() == null)
+            var spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
+            if (spriteRenderer == null)
             {
-                this.gameObject.AddComponent<SpriteRenderer>();
-                this.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-                this.gameObject.GetComponent<SpriteRenderer>().sprite = sprite1;
+                spriteRenderer = this.gameObject.AddComponent<SpriteRenderer>();
+                spriteRenderer.sortingOrder = 1;
+                spriteRenderer.sprite = sprite1;
             }
         }
     }
