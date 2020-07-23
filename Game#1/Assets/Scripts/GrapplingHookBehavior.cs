@@ -104,7 +104,7 @@ public class GrapplingHookBehavior : MonoBehaviour
 
     private void ShootGrapplingHook()
     {
-        Debug.Log("Shooting hook....");
+        //Debug.Log("Shooting hook....");
         //get mouse position in the world
         Vector2 cursorClick = playerCam.ScreenToWorldPoint(Input.mousePosition);
         Vector2 originPoint = grappleOriginTransform.position;
@@ -122,12 +122,12 @@ public class GrapplingHookBehavior : MonoBehaviour
             {
                 //if enemy
                 case "Enemy":
-                    Debug.Log("Grappling Hook hit enemy! That is all.");
+                    //Debug.Log("Grappling Hook hit enemy! That is all.");
                     break;
 
                 //if environment
                 case "EnvironmentTile":
-                    Debug.Log("Grappling Hook hit environment!");
+                    //Debug.Log("Grappling Hook hit environment!");
 
                     //retractDirection = hitInfo.point - originPoint;//may be redundant, but more precise
                     isGrappling = true;
@@ -141,7 +141,7 @@ public class GrapplingHookBehavior : MonoBehaviour
                     break;
 
                 default:
-                    Debug.Log("No TAG!");
+                    //Debug.Log("No TAG!");
                     break;
             }
         }

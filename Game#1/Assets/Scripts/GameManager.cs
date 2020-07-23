@@ -27,13 +27,13 @@ public class GameManager : MonoBehaviour
     {
         SingletonPattern();
         audioSource = GetComponent<AudioSource>() as AudioSource;
-        Debug.Log("AWAKE");
+        //Debug.Log("AWAKE");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("START!");
+        //Debug.Log("START!");
         GetStartPosition();
         nextSpawnPoint = startPoint.position;
         LoadAudio();
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         playerInstance = GameObject.FindGameObjectWithTag("Player");
         playerInstance.transform.position = nextSpawnPoint;
 
-        Debug.Log("Scenes in list: " + SceneManager.sceneCountInBuildSettings);
+        //Debug.Log("Scenes in list: " + SceneManager.sceneCountInBuildSettings);
 
     }
 
