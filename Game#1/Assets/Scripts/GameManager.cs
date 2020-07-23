@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         playerInstance = GameObject.FindGameObjectWithTag("Player");
         playerInstance.transform.position = nextSpawnPoint;
 
+        SceneManager.sceneLoaded += OnLevelLoaded;
         //Debug.Log("Scenes in list: " + SceneManager.sceneCountInBuildSettings);
 
     }
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
     /// Whateva! I do what I want!
     /// </summary>
     /// <param name="sceneNo"></param>
-    private void OnLevelWasLoaded(int sceneNo)
+    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
         //KillExistingPlayerIfAny();
 
